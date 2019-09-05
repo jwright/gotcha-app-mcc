@@ -37,6 +37,12 @@ class HomeScreen extends React.Component {
     navigation.navigate("ArenaList", { location: location });
   }
 
+  async componentWillMount() {
+    if (await Location.hasServicesEnabledAsync()) {
+      this.navigate();
+    }
+  }
+
   render() {
     return (
       <View style={styles.container}>
