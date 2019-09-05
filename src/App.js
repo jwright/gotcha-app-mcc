@@ -1,8 +1,11 @@
 import React from 'react';
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
+import { ApolloProvider } from "@apollo/react-hooks";
 
 import ArenaListScreen from "./screens/ArenaListScreen";
 import HomeScreen from "./screens/HomeScreen";
+
+import client from "./helpers/client";
 
 const Navigator = createSwitchNavigator(
   {
@@ -17,7 +20,9 @@ const Navigator = createSwitchNavigator(
 const AppNavigationContainer = createAppContainer(Navigator);
 
 const App = () => (
-  <AppNavigationContainer />
+  <ApolloProvider client={client}>
+    <AppNavigationContainer />
+  </ApolloProvider>
 )
 
 export default App;
